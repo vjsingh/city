@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1"
+			creator="GMapToGarminGPX.py" version="1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+	<rte>
+		<name>Unnamed Route: 20170123-013346</name>
+		<rtept lat="41.8195367" lon="-71.3971678">
+			<name>Point A</name>
+		</rtept>
+		<rtept lat="41.8883262" lon="-71.4222327">
+			<name>Point (B)</name>
+		</rtept>
+	</rte>
+</gpx>
