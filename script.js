@@ -612,7 +612,7 @@ function getListOfRoutes() {
     //var PREFIX = __dirname + '/files/' + TEST_COORDS_ID + '/images/';
     //var fileNames = [];
     var files = fs.readdirSync('./files/routes/');
-    files.forEach(file => {
+    files.forEach(function(file) {
         routeIds.push(file);
     });
 
