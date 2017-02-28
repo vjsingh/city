@@ -7,7 +7,7 @@ body {
 
 .routeImage {
     width: 860px;
-    height: 860px;
+    height: 860px;  /* Update in loadingImageDiv */
 }
 
 #images {
@@ -110,6 +110,14 @@ body {
     width: 142px;
     font-size: 20px;
     margin: 2px;
+}
+
+#loadingImageDiv {
+    color: white;
+    font-size: 70px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 860px;
 }
 
 

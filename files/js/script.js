@@ -6,6 +6,11 @@ var NUM_OF_IMAGES = $(CONTAINER_DIV).children().length;
 var g_CURRENT_IMG_INDEX = 0;  // advanced to 0 on first call of getNextIndex
 var g_NEXT_IMG_DIV_STR = '';
 
+var g_TIME_OF_LAST_IMAGE_CHANGE = 0;
+var g_NUM_OF_SECONDS_TO_WAIT_WHEN_CHANGING_IMAGES = 3;
+
+
+
 var g_getNumFiltersClicked = function() {
     var numChecked = 0;
     $("input:checkbox:checked").each(function(i){
@@ -42,8 +47,6 @@ var getNextBuffer = function() {
     url = '/getNextImages';
 
     // Send the data using post with element id name and name2
-    console.log(filterNum);
-    console.log(destructiveIndex);
     var posting = $.post( url, {imageIndex: imageIndex,
             filterNum: filterNum, destructiveIndex: destructiveIndex},
         function(data, status) {
@@ -52,6 +55,11 @@ var getNextBuffer = function() {
 }
 
 var getNextIndex = function() {
+    if ( ((Date.now() - g_TIME_OF_LAST_IMAGE_CHANGE ) / 1000) < g_NUM_OF_SECONDS_TO_WAIT_WHEN_CHANGING_IMAGES) {
+        $('#loadingImageDiv').show();
+        return;
+    }
+    $('#loadingImageDiv').hide();
     g_CURRENT_IMG_INDEX = g_CURRENT_IMG_INDEX + 1;
     if (g_CURRENT_IMG_INDEX == NUM_OF_IMAGES) {
         $('#images').html(g_NEXT_IMG_DIV_STR);
@@ -80,7 +88,6 @@ function changeImage() {
     var imgIndex = parseInt(getIndexOfCurrentImage());
     var indices = g_DESTINATION_INDICES;
     var currentNeighborhoodIndex = 0;
-    console.log(imgIndex);
     for (var i = 0; i < indices.length; i++) {
         if (indices[i] < imgIndex) {
             currentNeighborhoodIndex = i;
@@ -89,9 +96,7 @@ function changeImage() {
             }
         }
     }
-    console.log('cNI ' + currentNeighborhoodIndex);
     var name = g_DESTINATION_NAMES[currentNeighborhoodIndex];
-    console.log(name);
     $('.neighborhoodImage').attr('src', 'routes/providence_tour_complete/neighborhood_images/' +
             name + '.png');
 

@@ -561,6 +561,7 @@ function getImagesDivContents(index, opt_filterNum, opt_destructiveIndex) {
         htmlStr = htmlStr + '<img class="routeImage" style="display: none" src="' + imagesPrefix + file + '"/>';
     }
     htmlStr = htmlStr + '</div>'
+    htmlStr = htmlStr + '<div class="routeImage" id="loadingImageDiv" style="display:none">Loading...</div>'
     //console.log(htmlStr);
 
     // Send all data points
@@ -729,6 +730,7 @@ app.get('/', function (req, res) {
             };
 
             $('input.filter').on('change', function() {
+                g_TIME_OF_LAST_IMAGE_CHANGE = Date.now();
                 if (typeof g_ACTIVATED_FILTERS == 'undefined') {
                     g_ACTIVATED_FILTERS = [];
                 }
