@@ -39,7 +39,8 @@ body {
     float: left;
     /*width: 400px; */
     width: 20%;
-    margin-top: 166px;
+    /* margin-top: 166px; */
+    margin-top: 20px;
     padding-left: 20px;
     padding-right: 35px;
 }
@@ -107,6 +108,9 @@ body {
 .neighborhoodImage {
     /* width: 600px; */
     max-width: 100%;
+    @media only screen and (max-height: 901px) {
+        max-height: 587px;
+    }
 }
 
 #neighorhoodNamesContainer {
