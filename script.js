@@ -642,7 +642,8 @@ app.get('/', function (req, res) {
         //htmlStr = htmlStr + '<div class="question"> ' + filterN + '</div>';
         htmlStr = htmlStr + '<div class="switch">';
         htmlStr = htmlStr + '<input id="cmn-toggle-' + i + '" class="filter cmn-toggle-yes-no cmn-toggle" type="checkbox" name="' +  filterN + '" value="' + filterN + '"></input>';
-        htmlStr = htmlStr + '<label style="height:50px; width: 320px; display:inline-block;" for="cmn-toggle-' + i + '"' +
+        // Old with: 320px
+        htmlStr = htmlStr + '<label style="height:50px; min-width: 100%; max-width: 100%; display:inline-block;" for="cmn-toggle-' + i + '"' +
                 'data-on="' + filterN + '" data-off="' + filterN + '"></label>'; 
         //htmlStr = htmlStr + filterN + '</div></div></br>';
         htmlStr = htmlStr + '</div></div></br>';
@@ -706,6 +707,7 @@ app.get('/', function (req, res) {
 
                   var dataHtml = '';
                   $('#dataValues').css('display', 'none');
+                  var lastColor;
                   $("input:checkbox:checked").each(function(i){
                           $('#dataValues').css('display', '');
 
@@ -717,6 +719,7 @@ app.get('/', function (req, res) {
                           } else if (i == 2) {
                               color = 'red';
                           }
+                          lastColor = color;
                           filterName = $(this).val();
                           filterNum = filterNum + 1;
                           dataHtml = dataHtml + '<div class="dataValueContainer" style="color:' + color + ';">';
@@ -724,6 +727,17 @@ app.get('/', function (req, res) {
                           dataHtml = dataHtml + '<div class="dataValue"></div>';
                           dataHtml = dataHtml + '</div>';
                   });
+                  if (lastColor) {
+                      if (lastColor == 'blue') {
+                          $('#loadingImageDiv').html('Losing Blue...');
+                      } else if (lastColor == 'green') {
+                          $('#loadingImageDiv').html('Losing Blue and Green...');
+                      } else if (lastColor == 'red') {
+                          $('#loadingImageDiv').html('Losing all color...');
+                      }
+                  } else {
+                      $('#loadingImageDiv').html('Resetting...');
+                  }
                   $('#dataValues').html(dataHtml);
                   //getNextBuffer();  // Have to ensure buffer is not with the old images
               });
@@ -801,7 +815,6 @@ app.get('/', function (req, res) {
         </script>
     `;
 
-    htmlStr = htmlStr + '<div id="dataValues" style="display:none"> 0 </div>';
 
 
     // Make form to send new coordId from the garmin site
@@ -871,6 +884,7 @@ app.get('/', function (req, res) {
     htmlStr = htmlStr + '<div id="destructiveIndex"></div>';
     //htmlStr = htmlStr + '<div id="variableValue">Updating...</div>';
 
+    htmlStr = htmlStr + '<div id="dataValues" style="display:none"> 0 </div>';
     htmlStr = htmlStr + '<div id="images">';
     htmlStr = htmlStr + getImagesDivContents(0);
     htmlStr = htmlStr + getDestinationsDivContents();
@@ -882,6 +896,7 @@ app.get('/', function (req, res) {
     htmlStr = htmlStr + '<div id="middleSide">';
     htmlStr = htmlStr + '<img class="neighborhoodImage" src="routes/providence_tour_complete/neighborhood_images/Blackstone.png" />';
     var neighborhoodNames = ["Silver Lake", "Charles", "Elmwood", "Valley", "Blackstone", "Manton", "Washington Park", "Smith Hill", "Reservoir", "Fox Point", "Mt Pleasant", "Wayland", "South Elmwood", "Olneyville", "Federal Hill", "Elmhurst", "Wanskuck", "Downtown", "Hartford", "College Hill", "Lower S Providence", "Mt Hope", "West End", "Upper S Providence"]
+    htmlStr = htmlStr + '<div>Select Neighborhood: </div>';
     htmlStr = htmlStr + '<div id="neighorhoodNamesContainer">';
     for (var i = 0; i < neighborhoodNames.length; i++) {
         htmlStr = htmlStr + '<button class="pure-button neighborhoodName">' + neighborhoodNames[i] +'</button>';
