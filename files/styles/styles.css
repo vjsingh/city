@@ -109,7 +109,7 @@ body {
     /* width: 600px; */
     max-width: 100%;
 }
-@media only screen and (max-height: 901px) {
+@media only screen and (max-height: 1010px) {
     .neighborhoodImage {
         max-height: 587px;
     }
