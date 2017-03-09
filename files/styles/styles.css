@@ -24,7 +24,8 @@ body {
 }
 
 #title {
-    font-size: 94px;
+    /* font-size: 94px; */
+    font-size: 75px; 
     padding: 30px 30px 30px 83px;
     font-weight: 900;
 }
