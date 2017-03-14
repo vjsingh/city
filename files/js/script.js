@@ -112,6 +112,13 @@ var getIndexOfNeighborhood = function(name) {
     }
     return 0;
 }
+
+function makeAboutButtonClickable() {
+    $('#aboutButton').click(function() {
+        $('#aboutPage').toggle();
+    });
+}
+
 $(document).ready(function() {
     var dests = JSON.parse($('#dataDestinationIndices').html());
     window.g_DESTINATION_INDICES = dests.indices;
@@ -128,4 +135,6 @@ $(document).ready(function() {
         var imgIndex = g_DESTINATION_INDICES[index];
         g_GET_NEW_IMAGES(imgIndex);
     });
+
+    makeAboutButtonClickable();
 });

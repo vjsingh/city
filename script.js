@@ -729,11 +729,11 @@ app.get('/', function (req, res) {
                   });
                   if (lastColor) {
                       if (lastColor == 'blue') {
-                          $('#loadingImageDiv').html('Losing Blue...');
+                          $('#loadingImageDiv').html('Subtracting Blue...');
                       } else if (lastColor == 'green') {
-                          $('#loadingImageDiv').html('Losing Blue and Green...');
+                          $('#loadingImageDiv').html('Subtracting Blue and Green...');
                       } else if (lastColor == 'red') {
-                          $('#loadingImageDiv').html('Losing all color...');
+                          $('#loadingImageDiv').html('Subtracting all color...');
                       }
                   } else {
                       $('#loadingImageDiv').html('Resetting...');
@@ -912,6 +912,8 @@ app.get('/', function (req, res) {
         names: neighborhoodNames
     });
     htmlStr = htmlStr + '</div>';
+    htmlStr = htmlStr + '<div id="aboutButton"> About </div>';
+    htmlStr = htmlStr + '<div id="aboutPage" style="display:none"> At the brink of a big data explosion, uncertainty surrounds how to utilize so much information. Despite temptation to extract as much as possible, we must stop and consider the implications. Rather than imposing data on anything and everything, let us be methodical and purposeful. Our piece invites you to reconsider the city as inherently humanistic and nuanced space. Take a virtual tour of Providence and see what gets lost behind the numbers. </br></br> Data Tourism computationally reconstructs a tour through all 25 neighborhoods of Providence by stitching together Google Street View images of a Google Maps route between public parks in all neighborhoods. US Census data published in 2015 is programmatically retrieved for each frame and dynamically displayed throughout the tour. When you add data, what do you subtract?</br> </br>Data Tourism is built by <span class="aboutName">Brett Halperin</span>, <span class="aboutName">Jolene Dosa</span>, <span class="aboutName">Rohan Katipally</span>, and <span class="aboutName">Varun Singh</span>.  </div>';
     res.send(htmlStr);
 })
 
