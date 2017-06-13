@@ -320,10 +320,10 @@ function createCallbackForCensusData(i, dataPoints, routeFileName, endIndex) {
         var state = fips.substring(0, 2);
         var county = fips.substring(2, 5);
         var tract = fips.substring(5, 11);
-        //INCOME: var url = 'http://api.census.gov/data/2015/acs5?get=B25119_001E,B25106_002E&for=tract:' +
-        //var url = 'http://api.census.gov/data/2015/acs5?get=B01001_026E,B25106_002E&for=tract:' +
+        //INCOME: var url = 'https://api.census.gov/data/2015/acs5?get=B25119_001E,B25106_002E&for=tract:' +
+        //var url = 'https://api.census.gov/data/2015/acs5?get=B01001_026E,B25106_002E&for=tract:' +
         // TODO: Key ommited for security reasons
-        var url = 'http://api.census.gov/data/2015/acs5?get=' + getMetricsString(g_METRICS) + '&for=tract:' +
+        var url = 'https://api.census.gov/data/2015/acs5?get=' + getMetricsString(g_METRICS) + '&for=tract:' +
         tract + '&in=state:' + state + '+county:' + county + '&key=';
         //var res = srequest('GET', url);
         //var res = res.getBody().toString('utf8');
